@@ -1,0 +1,1 @@
+include ':app', ':vue_kotlin'
