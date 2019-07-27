@@ -22,12 +22,12 @@ public class Router {
         public fun push(m: Vue){
 
             val topAc = instance.topActivity()
-            val className = m::javaClass.toString()
+            val className = m.toString()
             var mClass = m.v_viewController()
             val intent = Intent()
             intent.setClass(topAc,mClass)
-            val name = className.split('$')[0]
-            intent.putExtra("className",className)
+            val name = className.split('@')[0]
+            intent.putExtra("className",name)
             intent.putExtra("data","")
             topAc.startActivity(intent)
         }
@@ -44,8 +44,8 @@ public class Router {
             var mClass = m.v_viewController()
             val intent = Intent()
             intent.setClass(topAc,mClass)
-            val name = className.split('$')[0]
-            intent.putExtra("className",className)
+            val name = className.split('@')[0]
+            intent.putExtra("className",name)
             intent.putExtra("data",data)
             topAc.startActivity(intent)
 
@@ -58,8 +58,8 @@ public class Router {
             val intent = Intent()
             instance.block = block
             intent.setClass(topAc,mClass)
-            val name = className.split('$')[0]
-            intent.putExtra("className",className)
+            val name = className.split('@')[0]
+            intent.putExtra("className",name)
             intent.putExtra("data",data)
             topAc.startActivity(intent)
 

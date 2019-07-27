@@ -107,12 +107,12 @@ open class Vue{
 
     //array
     public var blockArrayDic = mutableMapOf<String,VueArrayBlock>()
-    public fun va_array(vId:String?,v:() -> MutableList<VueData>?){
+    public fun v_array(vId:String?,v:() -> MutableList<VueData>?){
 
         blockArrayDic[vId]?.invoke(v()!!)
 
     }
-    public fun v_array(vId:String?,v:VueArrayBlock?){
+    public fun v_arr(vId:String?,v:VueArrayBlock?){
 
         blockArrayDic.set(vId!!,v!!)
 

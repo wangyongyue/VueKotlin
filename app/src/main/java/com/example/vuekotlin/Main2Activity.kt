@@ -14,16 +14,18 @@ class Main2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         addActivity()
 
-        var vue = Main2()
-        Vue.register(R.layout.layout_item,RUserViewHolder::class.java.toString())
+        var v = vue
         recycler.layoutManager = LinearLayoutManager(this)
         var ad =  RAdapter()
-        ad.v_array(vID,vue)
+        ad.v_array(vID,v)
         recycler.adapter = ad
-        vue.v_start()
+        v.v_start()
 
         ad.v_didSelect {
-            Toast.makeText(this,"$it", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,className, Toast.LENGTH_SHORT).show()
+
+            val vue = Class.forName(this.className).getConstructor().newInstance() as Vue
+
         }
 
     }
@@ -47,10 +49,9 @@ class Main2: Vue(){
         for (i in 1..6){
             items.add(UserData("今天还会下雨吗$i"))
         }
-        this.va_array(vID,{
+        this.v_array(vID,{
 
-            return@va_array items
-
+            return@v_array items
         })
 
 

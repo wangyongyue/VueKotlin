@@ -57,10 +57,12 @@ class Main:Vue(){
         for (i in 1..12){
             items.add(UserData("今天下雨了$i"))
         }
-        this.va_array(vID,{
 
-            return@va_array items
+        this.v_array(vID,{
+
+            return@v_array items
         })
+
 
 
     }

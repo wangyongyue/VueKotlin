@@ -22,6 +22,16 @@ public val AppCompatActivity.params:String
 public val AppCompatActivity.className:String
     get() {return this.intent.getStringExtra("className")}
 
+public val AppCompatActivity.vue:Vue
+    get() {
+        val className = this.intent.getStringExtra("className")
+        val vue = Class.forName(className).getConstructor().newInstance() as Vue
+        return vue
+    }
+
+
+
+
 public fun AppCompatActivity.addActivity(){
 
     Router.instance.addActivity(this)

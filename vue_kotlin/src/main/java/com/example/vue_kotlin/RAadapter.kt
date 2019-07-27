@@ -56,7 +56,7 @@ public class RAdapter : RecyclerView.Adapter<RHolder>() {
     //v-list
     public fun v_array(vId:String,vue: Vue?){
 
-        vue?.v_array(vId,{ it:MutableList<VueData> ->
+        vue?.v_arr(vId,{ it:MutableList<VueData> ->
 
             this.items = it
             this.notifyDataSetChanged()
