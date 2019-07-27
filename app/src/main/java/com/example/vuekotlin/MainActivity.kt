@@ -1,5 +1,6 @@
 package com.example.vuekotlin
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -11,42 +12,33 @@ import android.widget.Toast
 import com.example.vue_kotlin.*
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+val vID = "arrayId"
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         addActivity()
-        var arrayVue = Vue()
-
-        var holders = mapOf<Int,String>(
-            R.layout.layout_item to RUserViewHolder::class.java.toString()
-        )
 
 
+        Vue.register(R.layout.layout_item,RUserViewHolder::class.java.toString())
+
+
+
+        var vue = Main()
         recycler.layoutManager = LinearLayoutManager(this)
-        var ad =  RAdapter(holders)
-        ad.v_list(arrayVue)
+        var ad =  RAdapter()
+        ad.v_array(vID,vue)
         recycler.adapter = ad
-
-        arrayVue.v_list(true,{
-
-            var items = mutableListOf<VueData>()
-            for (i in 1..12){
-                items.add(UserData("今天下雨了$i"))
-            }
-
-            return@v_list items
-        })
+        vue.v_start()
 
         ad.v_didSelect {
-
             Toast.makeText(this,"$it",Toast.LENGTH_SHORT).show()
 
+            Router.push(Main2())
         }
-
-
-
 
     }
 
@@ -55,6 +47,26 @@ class MainActivity : AppCompatActivity() {
         removeActivity()
     }
 }
+class Main:Vue(){
+
+
+    override fun v_start() {
+        super.v_start()
+
+        var items = mutableListOf<VueData>()
+        for (i in 1..12){
+            items.add(UserData("今天下雨了$i"))
+        }
+        this.va_array(vID,{
+
+            return@va_array items
+        })
+
+
+    }
+}
+
+
 class UserData(var name:String): VueData {
 
     override val layoutIdentity: Int
@@ -84,7 +96,7 @@ class RUserViewHolder(viewItem: View) : RHolder(viewItem){
 
                 model?.v_identifier = 1
 
-                v_selectOb.v_on?.invoke()
+                v_to()
 
             }
 

@@ -3,6 +3,8 @@ package com.example.vue_kotlin
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.view.LayoutInflater
+import android.view.View
 import java.util.*
 
 public typealias popCallBack = (obj:Any) -> Unit
@@ -16,50 +18,49 @@ public class Router {
 
         public val instance: Router by lazy { Router() }
 
-        public fun <T> push(clazz: Class<T>){
+
+        public fun push(m: Vue){
 
             val topAc = instance.topActivity()
+            val className = m::javaClass.toString()
+            var mClass = m.v_viewController()
             val intent = Intent()
-            intent.setClass(topAc,clazz)
-            intent.putExtra("data","")
-            topAc.startActivity(intent)
-        }
-        public fun <T> push(clazz: Class<T>,className:String){
-
-            val topAc = instance.topActivity()
-            val intent = Intent()
-            intent.setClass(topAc,clazz)
+            intent.setClass(topAc,mClass)
             val name = className.split('$')[0]
-            intent.putExtra("className",name)
+            intent.putExtra("className",className)
             intent.putExtra("data","")
             topAc.startActivity(intent)
         }
+
         public fun pop(){
 
             val topAc = instance.topActivity()
             topAc.finish()
         }
-        public fun <T> push(clazz:Class<T>,className:String,data:String){
+        public fun push(m:Vue,data:String){
 
             val topAc = instance.topActivity()
+            val className = m::javaClass.toString()
+            var mClass = m.v_viewController()
             val intent = Intent()
-            intent.putExtra("data",data)
+            intent.setClass(topAc,mClass)
             val name = className.split('$')[0]
-            intent.putExtra("className",name)
-            intent.setClass(topAc,clazz)
+            intent.putExtra("className",className)
+            intent.putExtra("data",data)
             topAc.startActivity(intent)
 
-
         }
-        public fun <T> push(clazz:Class<T>,className:String,data:String,block: popCallBack){
+        public fun push(m:Vue,data:String,block: popCallBack){
 
             val topAc = instance.topActivity()
+            val className = m::javaClass.toString()
+            var mClass = m.v_viewController()
             val intent = Intent()
             instance.block = block
-            intent.putExtra("data",data)
+            intent.setClass(topAc,mClass)
             val name = className.split('$')[0]
-            intent.putExtra("className",name)
-            intent.setClass(topAc,clazz)
+            intent.putExtra("className",className)
+            intent.putExtra("data",data)
             topAc.startActivity(intent)
 
 
