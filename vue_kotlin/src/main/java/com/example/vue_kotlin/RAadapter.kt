@@ -36,7 +36,7 @@ public class RAdapter : RecyclerView.Adapter<RHolder>() {
         holder.v_to {
 
             indexBlock?.invoke(position)
-            indexVue?.v_index(vId,position)
+            indexVue?.v_vindex(vId,position)
         }
 
 
@@ -56,7 +56,7 @@ public class RAdapter : RecyclerView.Adapter<RHolder>() {
     //v-list
     public fun v_array(vId:String,vue: Vue?){
 
-        vue?.v_arr(vId,{ it:MutableList<VueData> ->
+        vue?.v_varray(vId,{ it:MutableList<VueData> ->
 
             this.items = it
             this.notifyDataSetChanged()

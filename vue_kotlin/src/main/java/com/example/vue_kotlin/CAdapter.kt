@@ -48,7 +48,7 @@ public class CAdapter (var context: Context) : BaseAdapter() {
         holder.v_to {
 
             indexBlock?.invoke(position)
-            indexVue?.v_index(vId,position)
+            indexVue?.v_vindex(vId,position)
         }
 
 
@@ -70,7 +70,7 @@ public class CAdapter (var context: Context) : BaseAdapter() {
     //v-list
     public fun v_array(vId:String,vue: Vue?){
 
-        vue?.v_arr(vId,{ it:MutableList<VueData> ->
+        vue?.v_varray(vId,{ it:MutableList<VueData> ->
 
             this.items = it
             this.notifyDataSetChanged()

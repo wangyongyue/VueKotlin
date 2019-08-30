@@ -46,7 +46,7 @@ public fun AppCompatActivity.removeActivity(){
 //{{ text }}
 public fun TextView.v_text(vId:String?,vue: Vue?){
 
-    vue?.v_text(vId,{ it:String ->
+    vue?.v_vtext(vId,{ it:String ->
 
         this.text = it
 
@@ -57,7 +57,7 @@ public fun TextView.v_text(vId:String?,vue: Vue?){
 //v-if
 public fun TextView.v_if(vId:String?,vue:Vue?){
 
-    vue?.v_if(vId,{ it:Boolean ->
+    vue?.v_vif(vId,{ it:Boolean ->
         if (it){
             this.visibility = View.GONE
         }else{
@@ -72,7 +72,7 @@ public fun TextView.v_if(vId:String?,vue:Vue?){
 //v-image
 public fun ImageView.v_image(vId:String?,vue: Vue?){
 
-    vue?.v_image(vId,{ it:Bitmap ->
+    vue?.v_vimage(vId,{ it:Bitmap ->
 
         this.setImageBitmap(it)
     })
@@ -82,7 +82,7 @@ public fun ImageView.v_image(vId:String?,vue: Vue?){
 //v-if
 public fun ImageView.v_if(vId:String?,vue: Vue){
 
-    vue?.v_if(vId,{ it:Boolean ->
+    vue?.v_vif(vId,{ it:Boolean ->
 
         if (it){
             this.visibility = View.GONE
@@ -97,7 +97,7 @@ public fun ImageView.v_if(vId:String?,vue: Vue){
 //v-image
 public fun ImageButton.v_image(vId:String?,vue: Vue?){
 
-    vue?.v_image(vId,{ it:Bitmap ->
+    vue?.v_vimage(vId,{ it:Bitmap ->
 
         this.setImageBitmap(it)
     })
@@ -108,7 +108,7 @@ public fun ImageButton.v_image(vId:String?,vue: Vue?){
 //v-if
 public fun ImageButton.v_if(vId:String?,vue: Vue?){
 
-    vue?.v_if(vId,{ it:Boolean ->
+    vue?.v_vif(vId,{ it:Boolean ->
         if (it){
             this.visibility = View.GONE
         }else{
@@ -124,7 +124,7 @@ public fun ImageButton.v_on(vId:String?,vue: Vue?){
 
     this.setOnClickListener {
 
-        vue?.v_on(vId)
+        vue?.v_von(vId)
     }
 
 }
@@ -144,7 +144,7 @@ public fun ImageButton.v_click(vue:VueBlock){
 //{{ text }}
 public fun Button.v_text(vId:String?,vue: Vue?){
 
-    vue?.v_text(vId,{ it:String ->
+    vue?.v_vtext(vId,{ it:String ->
 
         this.text = it
     })
@@ -156,7 +156,7 @@ public fun Button.v_text(vId:String?,vue: Vue?){
 //v-if
 public fun Button.v_if(vId:String?,vue: Vue?){
 
-    vue?.v_if(vId,{ it:Boolean ->
+    vue?.v_vif(vId,{ it:Boolean ->
         if (it){
             this.visibility = View.GONE
         }else{
@@ -173,7 +173,7 @@ public fun Button.v_on(vId:String?,vue: Vue?){
 
     this.setOnClickListener {
 
-        vue?.v_on(vId)
+        vue?.v_von(vId)
 
     }
 
@@ -193,7 +193,7 @@ public fun Button.v_click(vue:VueBlock){
 //{{ text }}
 public fun EditText.v_text(vId:String?,vue: Vue?){
 
-    vue?.v_text(vId,{it:String ->
+    vue?.v_vtext(vId,{it:String ->
 
         this.setText(it)
     })
@@ -204,7 +204,7 @@ public fun EditText.v_text(vId:String?,vue: Vue?){
 //v-if
 public fun EditText.v_if(vId:String?,vue: Vue?){
 
-    vue?.v_if(vId,{ it:Boolean ->
+    vue?.v_vif(vId,{ it:Boolean ->
         if (it){
             this.visibility = View.GONE
         }else{
@@ -231,7 +231,7 @@ internal class EditWatcher(var vId:String,var vue:Vue) : TextWatcher {
     }
     override fun onTextChanged(s:CharSequence, start:Int, count:Int, after:Int) {
 
-        vue.v_input(vId,s.toString())
+        vue.v_vinput(vId,s.toString())
     }
 }
 

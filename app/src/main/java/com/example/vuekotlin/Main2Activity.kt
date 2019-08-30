@@ -6,6 +6,10 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.example.vue_kotlin.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_item.*
+
+
+val textId = "textId"
 
 class Main2Activity : AppCompatActivity() {
 
@@ -27,6 +31,14 @@ class Main2Activity : AppCompatActivity() {
             val vue = Class.forName(this.className).getConstructor().newInstance() as Vue
 
         }
+//        var av = Vue()
+//
+//        textView.v_text(textId,av)
+//        av.v_text(textId,{
+//
+//            return@v_text "text"
+//        })
+
 
     }
 

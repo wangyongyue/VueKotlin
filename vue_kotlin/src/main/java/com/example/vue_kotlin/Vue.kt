@@ -35,7 +35,7 @@ open class Vue{
         blockTextDic[vId]?.invoke(v()!!)
 
     }
-    public fun v_text(vId:String?,v:VueTextBlock?){
+    public fun v_vtext(vId:String?,v:VueTextBlock?){
 
         blockTextDic.set(vId!!,v!!)
 
@@ -47,7 +47,7 @@ open class Vue{
         blockImgDic[vId]?.invoke(v()!!)
 
     }
-    public fun v_image(vId:String?,v:VueImgBlock?){
+    public fun v_vimage(vId:String?,v:VueImgBlock?){
 
         blockImgDic.set(vId!!,v!!)
 
@@ -59,7 +59,7 @@ open class Vue{
 
         blockIfDic[vId]?.invoke(v()!!)
     }
-    public fun v_if(vId:String?,v:VueIfBlock?){
+    public fun v_vif(vId:String?,v:VueIfBlock?){
 
         blockIfDic.set(vId!!,v!!)
 
@@ -72,7 +72,7 @@ open class Vue{
         blockOnDic.set(vId!!,v!!)
 
     }
-    public fun v_on(vId:String?){
+    public fun v_von(vId:String?){
 
         blockOnDic[vId]?.invoke()
 
@@ -85,7 +85,7 @@ open class Vue{
         blockInputDic.set(vId!!,v!!)
 
     }
-    public fun v_input(vId:String?,text:String){
+    public fun v_vinput(vId:String?,text:String){
 
         blockInputDic[vId]?.invoke(text)
 
@@ -98,7 +98,7 @@ open class Vue{
         blockIndexDic.set(vId!!,v!!)
 
     }
-    public fun v_index(vId:String?,index:Int){
+    public fun v_vindex(vId:String?,index:Int){
 
         blockIndexDic[vId]?.invoke(index)
 
@@ -112,7 +112,7 @@ open class Vue{
         blockArrayDic[vId]?.invoke(v()!!)
 
     }
-    public fun v_arr(vId:String?,v:VueArrayBlock?){
+    public fun v_varray(vId:String?,v:VueArrayBlock?){
 
         blockArrayDic.set(vId!!,v!!)
 
