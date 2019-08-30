@@ -1,5 +1,7 @@
 package com.example.vuekotlin
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,8 +10,7 @@ import com.example.vue_kotlin.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_item.*
 
-
-val textId = "textId"
+val testId = "testId"
 
 class Main2Activity : AppCompatActivity() {
 
@@ -24,20 +25,6 @@ class Main2Activity : AppCompatActivity() {
         ad.v_array(vID,v)
         recycler.adapter = ad
         v.v_start()
-
-        ad.v_didSelect {
-            Toast.makeText(this,className, Toast.LENGTH_SHORT).show()
-
-            val vue = Class.forName(this.className).getConstructor().newInstance() as Vue
-
-        }
-//        var av = Vue()
-//
-//        textView.v_text(textId,av)
-//        av.v_text(textId,{
-//
-//            return@v_text "text"
-//        })
 
 
     }
